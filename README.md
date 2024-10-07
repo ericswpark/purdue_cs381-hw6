@@ -1,4 +1,4 @@
-# Purdue - Fall 2024 - CS 381 - HW5
+# Purdue - Fall 2024 - CS 381 - HW6
 
 API server for testing inputs for homework, written with Rust
 
