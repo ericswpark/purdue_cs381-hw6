@@ -14,16 +14,11 @@ pub struct QuestionTwoAnswer {
     pub(crate) answer: u32,
 }
 
-
 pub struct AppError(anyhow::Error);
 
 impl IntoResponse for AppError {
     fn into_response(self) -> Response {
-        (
-            StatusCode::BAD_REQUEST,
-            format!("{}", self.0),
-        )
-            .into_response()
+        (StatusCode::BAD_REQUEST, format!("{}", self.0)).into_response()
     }
 }
 

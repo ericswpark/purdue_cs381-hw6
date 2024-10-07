@@ -1,10 +1,10 @@
 use crate::structs::*;
 use cs381_hw6::*;
 
+use anyhow::Result;
 use axum::http::StatusCode;
 use axum::response::IntoResponse;
 use axum::Json;
-use anyhow::Result;
 
 fn do_question_two(p: Vec<u32>, t: Vec<u32>, e: u32) -> Result<u32, AppError> {
     Ok(homework_points(&p, &t, e)?)
