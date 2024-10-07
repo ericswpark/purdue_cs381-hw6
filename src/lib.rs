@@ -8,6 +8,10 @@ pub fn homework_points(p: &[u32], t: &[u32], e: u32) -> Result<u32>{
     if p.len() != t.len() {
         return Err(anyhow!("Points and time arrays do not match in length!"))
     }
+    
+    if e == 0 {
+        return Ok(0)
+    }
 
     // (point, assigned_time)
     let mut homeworks: Vec<(u32, u32)> = Vec::new();
@@ -60,6 +64,15 @@ mod tests {
         let t = vec![3];
         
         assert_eq!(homework_points(&p, &t, 1).is_err(), true);
+    }
+    
+    #[test]
+    fn test_homework_points_no_days() {
+        let p = vec![8, 2, 4, 5, 9, 6, 3];
+        let t = vec![0, 4, 1, 6, 2, 0, 0];
+        let e = 0;
+
+        assert_eq!(homework_points(&p, &t, e).unwrap(), 0);
     }
     
     
