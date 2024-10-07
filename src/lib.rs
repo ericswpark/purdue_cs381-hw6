@@ -4,7 +4,7 @@ use anyhow::{anyhow, Result};
 ///
 /// Note: the last day isn't counted in this implementation, as we assume each homework takes 1 unit
 ///       of time to complete!
-pub fn homework_points(p: &[u32], t: &[u32], e: u32) -> Result<u32> {
+pub fn homework_points(p: &[u32], t: &[u32], e: u16) -> Result<u32> {
     if p.len() != t.len() {
         return Err(anyhow!("Points and time arrays do not match in length!"));
     }
@@ -27,7 +27,7 @@ pub fn homework_points(p: &[u32], t: &[u32], e: u32) -> Result<u32> {
         let possible_homeworks: Vec<(u32, u32)> = homeworks
             .iter()
             .cloned()
-            .filter(|(_, d)| *d <= day)
+            .filter(|(_, d)| *d <= day as u32)
             .collect();
         let max_points_homework = possible_homeworks.iter().cloned().max_by_key(|h| h.0);
 

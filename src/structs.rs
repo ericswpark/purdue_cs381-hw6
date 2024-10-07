@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 pub struct QuestionTwo {
     pub(crate) p: Vec<u32>,
     pub(crate) t: Vec<u32>,
-    pub(crate) e: u32,
+    pub(crate) e: u16,
 }
 
 #[derive(Serialize)]
