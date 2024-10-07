@@ -1,6 +1,7 @@
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use serde::{Deserialize, Serialize};
+use serde_json::json;
 
 #[derive(Deserialize)]
 pub struct QuestionTwo {
@@ -18,7 +19,9 @@ pub struct AppError(anyhow::Error);
 
 impl IntoResponse for AppError {
     fn into_response(self) -> Response {
-        (StatusCode::BAD_REQUEST, format!("{}", self.0)).into_response()
+        let error_message = format!("{}", self.0);
+        let body = json!({ "error": error_message });
+        (StatusCode::BAD_REQUEST, body.to_string()).into_response()
     }
 }
 
