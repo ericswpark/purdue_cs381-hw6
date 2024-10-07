@@ -22,7 +22,7 @@ pub fn homework_points(p: &[u32], t: &[u32], e: u16) -> Result<u32> {
 
     let mut completed_homeworks = Vec::new();
 
-    for day in 0..(e - 1) {
+    for day in 0..e {
         // From the pool of possible homeworks (assigned on or before current `day` value), find max
         let possible_homeworks: Vec<(u32, u32)> = homeworks
             .iter()
@@ -54,9 +54,16 @@ mod tests {
     fn test_homework_points() {
         let p = vec![8, 2, 4, 5, 9, 6, 3];
         let t = vec![0, 4, 1, 6, 2, 0, 0];
-        let e = 5;
 
-        assert_eq!(homework_points(&p, &t, e).unwrap(), 27);
+        assert_eq!(homework_points(&p, &t, 0).unwrap(), 0);
+        assert_eq!(homework_points(&p, &t, 1).unwrap(), 8);
+        assert_eq!(homework_points(&p, &t, 2).unwrap(), 14);
+        assert_eq!(homework_points(&p, &t, 3).unwrap(), 23);
+        assert_eq!(homework_points(&p, &t, 4).unwrap(), 27);
+        assert_eq!(homework_points(&p, &t, 5).unwrap(), 30);
+        assert_eq!(homework_points(&p, &t, 6).unwrap(), 32);
+        assert_eq!(homework_points(&p, &t, 7).unwrap(), 37);
+        assert_eq!(homework_points(&p, &t, 8).unwrap(), 37);
     }
 
     #[test]
@@ -65,14 +72,5 @@ mod tests {
         let t = vec![3];
 
         assert_eq!(homework_points(&p, &t, 1).is_err(), true);
-    }
-
-    #[test]
-    fn test_homework_points_no_days() {
-        let p = vec![8, 2, 4, 5, 9, 6, 3];
-        let t = vec![0, 4, 1, 6, 2, 0, 0];
-        let e = 0;
-
-        assert_eq!(homework_points(&p, &t, e).unwrap(), 0);
     }
 }
