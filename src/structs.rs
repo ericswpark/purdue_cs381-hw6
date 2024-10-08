@@ -5,8 +5,8 @@ use serde_json::json;
 
 #[derive(Deserialize)]
 pub struct QuestionTwo {
-    pub(crate) p: Vec<u32>,
-    pub(crate) t: Vec<u32>,
+    pub(crate) p: Vec<i32>,
+    pub(crate) t: Vec<i32>,
     pub(crate) e: u16,
 }
 
