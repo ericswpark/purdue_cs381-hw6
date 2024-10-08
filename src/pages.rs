@@ -6,7 +6,7 @@ use axum::http::StatusCode;
 use axum::response::IntoResponse;
 use axum::Json;
 
-fn do_question_two(p: Vec<i32>, t: Vec<i32>, e: u16) -> Result<u32, AppError> {
+fn do_question_two(p: Vec<i32>, t: Vec<u32>, e: u16) -> Result<u32, AppError> {
     Ok(homework_points(&p, &t, e)?)
 }
 
